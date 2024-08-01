@@ -35,6 +35,10 @@ public class MessageProvider {
         return message("no-permission");
     }
 
+    public Component noPlayerMessage() {
+        return message("no-player");
+    }
+
     public Component noServerMessage() {
         return message("no-server");
     }
@@ -42,4 +46,9 @@ public class MessageProvider {
     public Component onlyPlayersMessage() {
         return message("only-players");
     }
+
+    public Component alreadyConnectedMessage() {
+        return message("already-connected");
+    }
+
 }

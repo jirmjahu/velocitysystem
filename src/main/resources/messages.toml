@@ -1,11 +1,31 @@
-prefix = "<dark_gray>» <blue>Proxy <dark_gray>┃ <reset>"
+prefix = "<dark_gray>» <><gradient:#4380D7:#5D93E0>Proxy</b> <dark_gray>┃ <reset>"
 no-permission = "<red>Dazu hast du keine Rechte"
 no-player = "<red>Dieser Spieler wurde nicht gefunden"
 no-server = "<gray>Dieser Server wurde <red>nicht <gray>gefunden"
 only-players =" <red>Du musst ein Spieler sein!"
+already-connected = "<red>Du bist bereits mit diesem Server verbunden"
 
 [command.list]
 proxy = "<gray>Es sind aktuell <aqua>%player_count% <gray>Spieler mit der Proxy verbunden<dark_gray>:"
 server = "<gray>Es sind aktuell <aqua>%server_players% <gray>Spieler mit dem Server <aqua>%server% <gray>verbunden<dark_gray>:"
+server-empty = "<gray>Es sind <red>keine <gray>Spieler mit diesem Server verbunden"
 playerinfo = "<dark_gray>» <aqua>%player% <dark_gray>(<gray>%server%<dark_gray>)"
-usage = "<gray>Verwende<dark_gray>: <gray>/list <dark_gray>[<gray>Server<dark_gray>]"
+usage = "<gray>Verwende<dark_gray>: <gray>/list <dark_gray>(<gray>Server<dark_gray>)"
+
+[command.jumpto]
+#You can also use the %player% placeholder if you want to.
+conncted = "<gray>Du wurdest zu dem Server <aqua>%server% <gray>verbunden" 
+usage = "<gray>Verwende<dark_gray>: <gray>/jumpto <dark_gray>[<gray>Spieler<dark_gray>]"
+
+[command.find]
+found-player = "<gray>Der Spieler <aqua>%player% <gray>befindet sich auf <aqua>%server%"
+usage = "<gray>Verwende<dark_gray>: <gray>/find <dark_gray>[<gray>Spieler<dark_gray>]"
+
+[command.ping]
+self = "<gray>Dein Aktueller Ping beträgt <aqua>%ping%<gray>ms"
+other = "<gray>Der Ping vom Ping von <aqua>%player% <gray>beträgt <aqua>%ping%<gray>ms"
+usage = "<gray>Verwende<dark_gray>: <gray>/ping <dark_gray>(<gray>Spieler<dark_gray>)"
+
+[command.broadcast]
+message = "<dark_gray>» <aqua><bold>Broadcast </bold><dark_gray>┃ <gray>%content%"
+usage = "<gray>Verwende<dark_gray>: <gray>/broadcast <dark_gray>[<gray>Nachricht<dark_gray>]"

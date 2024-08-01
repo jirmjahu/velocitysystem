@@ -6,7 +6,6 @@ import com.velocitypowered.api.proxy.ProxyServer;
 import lombok.RequiredArgsConstructor;
 import net.jirmjahu.velocitysystem.config.message.MessageProvider;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -43,11 +42,15 @@ public class ListCommand implements SimpleCommand {
                 return;
             }
 
-            player.sendMessage(messageProvider.message("command.list.server").replaceText(text -> text.match("%player_count%").replacement(String.valueOf(server.get().getPlayersConnected().size()))));
-            server.get().getPlayersConnected().forEach(onlinePlayer ->
-                    player.sendMessage(messageProvider.message("command.list.playerinfo", false)
-                            .replaceText(text -> text.match("%player%").replacement(onlinePlayer.getUsername()))
-                            .replaceText(text -> text.match("%server%").replacement(server.get().getServerInfo().getName()))));
+            //check if there are players connected to this server
+            if (server.get().getPlayersConnected().isEmpty()) {
+                player.sendMessage(messageProvider.message("command.list.server.empty"));
+                return;
+            }
+
+            player.sendMessage(messageProvider.message("command.list.server")
+                    .replaceText(text -> text.match("%server_players%").replacement(String.valueOf(server.get().getPlayersConnected().size())))
+                    .replaceText(text -> text.match("%server%").replacement(String.valueOf(server.get().getPlayersConnected().size()))));
             return;
         }
 
@@ -58,14 +61,14 @@ public class ListCommand implements SimpleCommand {
     public List<String> suggest(Invocation invocation) {
         var args = invocation.arguments();
 
-        List<String> suggestions = new ArrayList<>();
         if (args.length == 0) {
-            suggestions.addAll(this.server.getAllServers().stream().map(server -> server.getServerInfo().getName()).toList());
+            return this.server.getAllServers().stream().map(server -> server.getServerInfo().getName()).toList();
         }
 
         if (args.length == 1) {
-            suggestions.addAll(this.server.getAllServers().stream().map(server -> server.getServerInfo().getName()).filter(serverName -> serverName.startsWith(args[0])).toList());
+            return this.server.getAllServers().stream().map(server -> server.getServerInfo().getName()).filter(serverName -> serverName.startsWith(args[0])).toList();
         }
-        return suggestions;
+
+        return List.of();
     }
 }

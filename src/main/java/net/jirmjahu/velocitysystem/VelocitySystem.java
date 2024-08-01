@@ -8,7 +8,10 @@ import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.proxy.ProxyServer;
 import lombok.Getter;
+import net.jirmjahu.velocitysystem.command.BroadcastCommand;
+import net.jirmjahu.velocitysystem.command.JumpToCommand;
 import net.jirmjahu.velocitysystem.command.ListCommand;
+import net.jirmjahu.velocitysystem.command.PingCommand;
 import net.jirmjahu.velocitysystem.config.ConfigManager;
 import net.jirmjahu.velocitysystem.config.message.MessageProvider;
 import org.slf4j.Logger;
@@ -40,6 +43,11 @@ public class VelocitySystem {
 
         //register command
         this.registerCommand("list", new ListCommand(this.server, this.messageProvider), "glist", "onlineplayers");
+        this.registerCommand("jumpto", new JumpToCommand(this.server, this.messageProvider), "goto");
+        this.registerCommand("broadcast", new BroadcastCommand(this.server, this.messageProvider), "bc", "alert");
+        this.registerCommand("ping", new PingCommand(this.server, this.messageProvider), "latency");
+        this.registerCommand("find", new BroadcastCommand(this.server, this.messageProvider), "whereis");
+
 
         logger.info("[VelocitySystem] The Plugin has been enabled! (Took {}ms)", System.currentTimeMillis() - currentTime);
     }
