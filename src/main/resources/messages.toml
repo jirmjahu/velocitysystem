@@ -1,0 +1,11 @@
+prefix = "<dark_gray>» <blue>Proxy <dark_gray>┃ <reset>"
+no-permission = "<red>Dazu hast du keine Rechte"
+no-player = "<red>Dieser Spieler wurde nicht gefunden"
+no-server = "<gray>Dieser Server wurde <red>nicht <gray>gefunden"
+only-players =" <red>Du musst ein Spieler sein!"
+
+[command.list]
+proxy = "<gray>Es sind aktuell <aqua>%player_count% <gray>Spieler mit der Proxy verbunden<dark_gray>:"
+server = "<gray>Es sind aktuell <aqua>%server_players% <gray>Spieler mit dem Server <aqua>%server% <gray>verbunden<dark_gray>:"
+playerinfo = "<dark_gray>» <aqua>%player% <dark_gray>(<gray>%server%<dark_gray>)"
+usage = "<gray>Verwende<dark_gray>: <gray>/list <dark_gray>[<gray>Server<dark_gray>]"
